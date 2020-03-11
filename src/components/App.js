@@ -1,33 +1,26 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import GameCreate from './games/GameCreate';
+import GameDelete from './games/GameDelete';
+import GameEdit from './games/GameEdit';
+import GameList from './games/GameList';
+import GameShow from './games/GameShow';
+import Header from './Header';
+import Home from './Home';
 
-const PageOne = () => {
-    return( 
-    <div>
-        PageOne
-        <Link to="/pagetwo">Navigate to Page Two</Link> 
-    </div>
-    );
-};
-
-const PageTwo = () =>{
+const App = () => {
     return (
-    <div>
-        PageTwo
-        <Link to="/">Navigate to Page One</Link> 
-    </div>
-    
-    );
-};
-
-const App = () =>{
-    return (
-        <div>
+        <div className="ui container">
             <BrowserRouter>
-             <div>
-                <Route path='/' exact component={PageOne} />
-                <Route path='/pageTwo' component={PageTwo}/>
-             </div>
+                <div>
+                    <Header />
+                    <Route path="/" exact component={Home} />
+                    <Route path="/games/all" exact component={GameList} />
+                    <Route path="/games/new" exact component={GameCreate} />
+                    <Route path="/games/delete" exact component={GameDelete} />
+                    <Route path="/games/edit" exact component={GameEdit} />
+                    <Route path="/games/show" exact component={GameShow} />
+                </div>
             </BrowserRouter>
         </div>
     );
